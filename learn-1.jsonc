@@ -1,0 +1,46 @@
+{
+    "products": [{
+            "id": "1",
+            "colors": [{ "name": "red",
+            "sizes": [
+                { "name": "small", "quantity": 10 },
+                { "name": "medium", "quantity": 20}
+                    ]
+                },
+                {
+                    "name": "blue",
+                    "sizes": [{
+                            "name": "small",
+                            "quantity": 10
+                        },
+                        {
+                            "name": "medium",
+                            "quantity": 20
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "id": "2",
+            "colors": [{
+                    "name": "pink",
+                    "sizes": [{
+                            "name": "small",
+                            "quantity": 10
+                        }
+
+                    ]
+                },
+                {
+                    "name": "blue",
+                    "sizes": [{
+                        "name": "medium",
+                        "quantity": 20
+                    }]
+                }
+            ]
+        }
+    ]
+}
