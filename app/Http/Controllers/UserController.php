@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
     public function index()
     {
+
+
         // response all about
 
         // - header
@@ -30,12 +33,12 @@ class UserController extends Controller
             ],
         ];
         return response()->formatName($data);
-
     }
 
     // format name to upper case
 
-    public function formatName($name) {
+    public function formatName($name)
+    {
         return strtoupper($name);
     }
 }

@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\App;
+use Http;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +12,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-
     }
 
     /**
@@ -21,14 +19,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Response::macro('formatName', function (array $data) {
+        // Http::globalRequestMiddleware(function ($req) {
+        //     return $req->withHeader('X-Token', '12345');
+        // });
 
-            $data = collect($data)->transform(function($value){
-                $value['username'] = ucfirst($value['username']);
-                return $value;
-            });
-
-            return Response::make($data);
-        });
+        // Http::globalResponseMiddleware(function ($res) {
+        //     return $res->withHeader('X-Token', 'test in response header');
+        // });
     }
 }

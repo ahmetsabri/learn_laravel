@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SavePropertyController;
-use App\Models\Type;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShowPostController;
+use App\Http\Controllers\ShowProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $types = Type::all();
-    return view('properties', compact('types'));
-});
 
-Route::post('save-property', SavePropertyController::class)->name('save_property');
-
+Route::get('/post/{post:slug}', ShowPostController::class);
+Route::get('/product/{product:url_slug}', ShowProductController::class);
