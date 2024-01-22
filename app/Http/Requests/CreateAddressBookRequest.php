@@ -25,18 +25,17 @@ class CreateAddressBookRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'email' => ['required', 'email'],
-            'phone' => ['required', 'string', Rule::unique('address_books','phone')
-            ->where('name',$this->name)->where('email',$this->email)],
+            'phone' => ['required', 'string', Rule::unique('address_books', 'phone')
+                ->where('name', $this->name)->where('email', $this->email)],
         ];
     }
-
 
     public function messages()
     {
         return [
             'phone' => [
-                'unique' => 'This Address already exists'
-            ]
-            ];
+                'unique' => 'This Address already exists',
+            ],
+        ];
     }
 }

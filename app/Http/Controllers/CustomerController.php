@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Gate;
-use Illuminate\Http\Request;
 use App\Exports\CustomersExport;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Http\Requests\CreateCustomerRequest;
 use App\Imports\CustomerImport;
-use Http;
-use Storage;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerController extends Controller
 {
@@ -22,8 +18,6 @@ class CustomerController extends Controller
     {
         Excel::import(new CustomerImport, $request->file('customers'));
 
-
         return 'success';
     }
-
 }

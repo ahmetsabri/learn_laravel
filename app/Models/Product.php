@@ -13,6 +13,6 @@ class Product extends Model
     protected $guarded = [];
 
     protected $sluggable = 'name';
-    protected $slugColumn = 'url_slug';
 
+    protected $slugColumn = 'url_slug';
 }

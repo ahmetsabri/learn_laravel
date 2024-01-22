@@ -6,5 +6,4 @@ use ProtoneMedia\LaravelTaskRunner\Task;
 
 class ComposerGlobalUpdate extends Task
 {
-
 }

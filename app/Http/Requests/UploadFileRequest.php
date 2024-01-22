@@ -22,7 +22,7 @@ class UploadFileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'my_file' => 'required|file|mimes:pdf,docx,doc,png,jpeg|max:1000' // 1000 KB
+            'my_file' => 'required|file|mimes:pdf,docx,doc,png,jpeg|max:1000', // 1000 KB
         ];
     }
 }

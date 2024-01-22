@@ -12,21 +12,22 @@ use Spatie\DeletedModels\Models\Concerns\KeepsDeletedModels;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, KeepsDeletedModels, Searchable;
+    use HasApiTokens, HasFactory, KeepsDeletedModels, Notifiable, Searchable;
 
-      public function toSearchableArray()
+    public function toSearchableArray()
     {
-    return array_merge([
-        'id'    => (string) $this->id,
-        'name' =>  $this->name,
-        'email' => $this->email,
-    ]);
+        return array_merge([
+            'id' => (string) $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+        ]);
     }
 
-   public function searchableAs(): string
+    public function searchableAs(): string
     {
         return 'users_index';
     }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -59,11 +60,10 @@ class User extends Authenticatable
 
     public static function boot()
     {
-       parent::boot();
+        parent::boot();
 
-       static::creating(function($model){
+        static::creating(function ($model) {
             $model->name = strtoupper($model->name);
-       });
+        });
     }
-
 }

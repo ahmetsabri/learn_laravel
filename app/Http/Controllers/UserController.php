@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Maatwebsite\Excel\Facades\Excel;
-
 class UserController extends Controller
 {
     public function index()
     {
-
 
         // response all about
 
@@ -32,6 +29,7 @@ class UserController extends Controller
                 'username' => 'ahmed',
             ],
         ];
+
         return response()->formatName($data);
     }
 

@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class HttpController extends Controller
 {
-    public function __invoke(Request $request){
-       $posts = Http::get('https://jsonplaceholder.typicode.com/posts')->collect();
+    public function __invoke(Request $request)
+    {
+        $posts = Http::get('https://jsonplaceholder.typicode.com/posts')->collect();
 
-       dd($posts->first()['title']);
+        dd($posts->first()['title']);
     }
 }

@@ -24,6 +24,7 @@ class CreateCustomerRequest extends FormRequest
     public function rules(): array
     {
         auth()->loginUsingId(1);
+
         return [
             // 'name' => [Rule::can('create', Customer::class)]
         ];

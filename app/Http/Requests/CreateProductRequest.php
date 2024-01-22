@@ -22,7 +22,7 @@ class CreateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'timezone' => ['timezone:Per_country,US']
+            'timezone' => ['timezone:Per_country,US'],
         ];
     }
 

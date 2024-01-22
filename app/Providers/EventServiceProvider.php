@@ -21,8 +21,8 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         JobTimedOut::class => [
-            NotifyAboutTimeoutJob::class
-        ]
+            NotifyAboutTimeoutJob::class,
+        ],
     ];
 
     /**

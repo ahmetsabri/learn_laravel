@@ -9,7 +9,7 @@ use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
-    use HasFactory, Sluggable, Searchable;
+    use HasFactory, Searchable, Sluggable;
 
     protected $guarded = [];
 
@@ -17,14 +17,14 @@ class Post extends Model
 
     public function toSearchableArray()
     {
-    return array_merge([
-        'id'    => (string) $this->id,
-        'title' =>  $this->title,
-        'content' => $this->content,
-    ]);
+        return array_merge([
+            'id' => (string) $this->id,
+            'title' => $this->title,
+            'content' => $this->content,
+        ]);
     }
 
-   public function searchableAs(): string
+    public function searchableAs(): string
     {
         return 'posts_index';
     }

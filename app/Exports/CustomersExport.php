@@ -3,18 +3,13 @@
 namespace App\Exports;
 
 use App\Models\Customer;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\FromArray;
-use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\FromView;
-use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class CustomersExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize
+class CustomersExport implements FromQuery, ShouldAutoSize, WithHeadings, WithMapping
 {
     use Exportable;
 
@@ -26,7 +21,7 @@ class CustomersExport implements FromQuery, WithMapping, WithHeadings, ShouldAut
 
     public function query()
     {
-        return  Customer::query()->select('name', 'email', 'created_at');
+        return Customer::query()->select('name', 'email', 'created_at');
     }
 
     public function map($customer): array
@@ -34,7 +29,7 @@ class CustomersExport implements FromQuery, WithMapping, WithHeadings, ShouldAut
         return [
             ucfirst($customer->name),
             $customer->email,
-            $customer->created_at->format('Y-m-d')
+            $customer->created_at->format('Y-m-d'),
         ];
     }
 
@@ -43,7 +38,7 @@ class CustomersExport implements FromQuery, WithMapping, WithHeadings, ShouldAut
         return [
             'name',
             'email',
-            'created_at'
+            'created_at',
         ];
     }
 

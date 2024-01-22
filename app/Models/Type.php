@@ -15,5 +15,4 @@ class Type extends Model
     {
         return $this->hasMany(Property::class);
     }
-
 }
