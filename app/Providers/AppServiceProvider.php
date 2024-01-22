@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Http;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,12 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Http::globalRequestMiddleware(function ($req) {
-        //     return $req->withHeader('X-Token', '12345');
-        // });
-
-        // Http::globalResponseMiddleware(function ($res) {
-        //     return $res->withHeader('X-Token', 'test in response header');
-        // });
+        Model::shouldBeStrict();
     }
 }
