@@ -16,6 +16,7 @@ class CustomerController extends Controller
 
     public function import(Request $request)
     {
+        dd(123);
         Excel::import(new CustomerImport, $request->file('customers'));
 
         return 'success';

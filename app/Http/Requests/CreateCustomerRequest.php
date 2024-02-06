@@ -2,9 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Customer;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class CreateCustomerRequest extends FormRequest
 {
@@ -23,10 +22,9 @@ class CreateCustomerRequest extends FormRequest
      */
     public function rules(): array
     {
-        auth()->loginUsingId(1);
 
         return [
-            // 'name' => [Rule::can('create', Customer::class)]
+            'password' => [Password::min(3)],
         ];
     }
 }

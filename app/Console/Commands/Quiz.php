@@ -30,6 +30,7 @@ class Quiz extends Command
     public function handle()
     {
         $alreadyUsedQuestion = [];
+
         $question = $this->pickQuestion($alreadyUsedQuestion);
         $alreadyUsedQuestion[] = $question->id;
 
@@ -54,10 +55,12 @@ class Quiz extends Command
 
     public function pickQuestion(array $exculdedQuestions): ?Question
     {
-        return Question::whereNotIn('id', $exculdedQuestions)->inRandomOrder()->first()?->load('answers');
+        return Question::whereNotIn('id', $exculdedQuestions)
+            ->inRandomOrder()
+            ->first()?->load('answers');
     }
 
-    public function selectAnswer(Question $question)
+    public function selectAnswer(Question $question): bool
     {
         $answers = $question->answers;
 

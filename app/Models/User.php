@@ -5,38 +5,19 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Laravel\Scout\Searchable;
 use Spatie\DeletedModels\Models\Concerns\KeepsDeletedModels;
+use Str;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, KeepsDeletedModels, Notifiable, Searchable;
+    use HasApiTokens, HasFactory, KeepsDeletedModels;
 
-    public function toSearchableArray()
-    {
-        return array_merge([
-            'id' => (string) $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
-        ]);
-    }
-
-    public function searchableAs(): string
-    {
-        return 'users_index';
-    }
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'status',
     ];
 
     /**
@@ -61,9 +42,23 @@ class User extends Authenticatable
     public static function boot()
     {
         parent::boot();
-
+        dump(123);
         static::creating(function ($model) {
             $model->name = strtoupper($model->name);
         });
+    }
+
+        public static function booted()
+    {
+        parent::booted();
+        dump(1234);
+        static::creating(function ($model) {
+            $model->name = strtoupper($model->name);
+        });
+    }
+
+    public function getMailProvider()
+    {
+        return array_merge($this->attributes,['mail_provider'=>Str::afterLast($this->email, '@')]);
     }
 }
